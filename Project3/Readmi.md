@@ -3,28 +3,23 @@
 ####  Задача проекта: Требуется спрогнозировать количество заказов такси на следующий час в аэропорт, чтобы привлекать необходимое количество водителей в периоды пиковой нагрузки.
 
 *Инструменты:* 
-- *python*
-- *pandas*
-- *numpy*
-- *statsmodels.tsa.seasonal.seasonal_decompose*
-- *sklearn.model_selection.TimeSeriesSplit*
-- *sklearn.model_selection.GridSearchCV*
-- *sklearn.metrics.mean_squared_error*
-- *sklearn.metrics.make_scorer*
-- *sklearn.linear_model.LinearRegression*
-- *sklearn.ensemble.RandomForestRegressor*
-- *lightgbm.LGBMRegressor*
-- *sklearn.dummy.DummyRegressor*
-- *sklearn.metrics.r2_score*
-- *matplotlib*
+|  |  |
+| :---         |     :---     |
+|*python*|*sklearn.model_selection.TimeSeriesSplit*|
+|*pandas*|*sklearn.metrics.mean_squared_error*|
+|*numpy*|*sklearn.model_selection.GridSearchCV*|
+|*statsmodels.tsa.seasonal.seasonal_decompose*|*sklearn.metrics.make_scorer*|
+|*lightgbm.LGBMRegressor*|*sklearn.linear_model.LinearRegression*|
+|*matplotlib*|*sklearn.ensemble.RandomForestRegressor*|
+|*sklearn.dummy.DummyRegressor*|*sklearn.metrics.r2_score*|
 
 #### Описание проекта
 
 1. Проведено исследование временного ряда на предмет трендовых и сезонных закономерностей, случайной составляющей. Выяснили, что ряд имеет следующие характеристики:
 
-   + Есть общий тренд и он растущий;
-   + Существует не дельная и суточная сезонность;
-   + Присутствует случайная составляющая.
+   + Общий растущий тренд;
+   + Недельная и суточная сезонность;
+   + Случайная составляющая.
 
 2. Сформированы следующие признаки для обучения модели:
  + номера наблюдения,
@@ -36,13 +31,11 @@
  + лаг в 7 * 24 часа, для учёта недельной сезонности;
  + скользящие средние с окном 12 часов.
 
-
-3. Проверены четыре варианта моделей.
+3. Проверены четыре варианта моделей с кросс-валидацией.
 Наилучшие результаты показала модель `LinearRegression`
 
-
-| Модель                             | Результат RMSE  | r2_score         |
-| :---                               |     :---  :     |      :---:       |
+| Модель | RMSE | r2_score |
+| :---         |     :---:      |     :---:      |
 | LinearRegression                   |       36.21     |      0.62        |
 | DecisionTreeRegressor              |       47.70     |      0.34        |
 | RandomForestRegressor              |       48.85     |      0.31        |
@@ -50,6 +43,6 @@
 | Константная модель 'DummyRegressor'|       84,45     |      -1.06       |
 
 
-#### Общий вывод
+#### Вывод
 
-Модель удовлетворяет требование ТЗ по значению метрики RMSE (меньше 48 на тестовой выборке).
+Предлженная модель позволяет объяснить 62% дисперсии, удовлетворяет требование ТЗ по значению метрики RMSE (меньше 48 на тестовой выборке).
