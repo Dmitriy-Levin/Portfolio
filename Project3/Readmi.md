@@ -37,16 +37,18 @@
  + скользящие средние с окном 12 часов.
 
 
-3. Проверены четыре варианта моделей. Наилучшие результаты показала модель `LinearRegression`
+3. Проверены четыре варианта моделей.
+Наилучшие результаты показала модель `LinearRegression`
 
 
-| Модель                             | Результат RMSE: | r2_score:        |  
-| :---                               |     :---  :     |      :---:       | 
-| LinearRegression                   |       36.21     |      0.62        | 
-| DecisionTreeRegressor              |       47.70     |      0.34        | 
-| RandomForestRegressor              |       48.85     |      0.31        |  
-| LGBMRegressor                      |       39,28     |      0.56        | 
-| Константная модель 'DummyRegressor'|       84,45     |      -1.06       | 
+| Модель                             | Результат RMSE  | r2_score         |
+| :---                               |     :---  :     |      :---:       |
+| LinearRegression                   |       36.21     |      0.62        |
+| DecisionTreeRegressor              |       47.70     |      0.34        |
+| RandomForestRegressor              |       48.85     |      0.31        |
+| LGBMRegressor                      |       39,28     |      0.56        |
+| Константная модель 'DummyRegressor'|       84,45     |      -1.06       |
+
 
 #### Общий вывод
 
